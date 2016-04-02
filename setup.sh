@@ -31,9 +31,12 @@ apt-get install -y imagemagick # MiniMagick RMagick
 apt-get install -y libxslt-dev libxml2-dev # Nokogiri(kaminari...)
 apt-get install -y build-essential git-core curl libreadline6 libreadline6-dev libmysqlclient-dev libffi-dev nodejs
 
-# for python
-apt-get install -y python-dev python-pip python3 python3-pip gfortran liblapack-dev
+# For python
+apt-get install -y python-dev python-pip python3 python3-pip gfortran liblapack-dev libpng12-dev libfreetype6-dev
 pip install virtualenv
 
 # For android 
 apt-get install -y lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
+
+# For Elasticsearch
+apt-get install -y openjdk-7-jdk
