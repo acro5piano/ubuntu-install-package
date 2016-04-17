@@ -13,7 +13,7 @@ apt-get install -y fonts-takao fcitx fcitx-mozc language-pack-ja im-config fonts
 im-config -n fcitx
 
 # Development tools
-apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs 
+apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree
 
 # Maintenance tools
 apt-get install -y gparted 
