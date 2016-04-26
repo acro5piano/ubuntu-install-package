@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# Home folder
+cd /home/YOUR_HOME
+
 # General update
 apt-get update
 apt-get upgrade
 
 # Remove unuse items
 apt-get remove --purge -y netsurf*
-rm -rf ~/.netsurf
+rm -rf .netsurf
 
 # Language and inputs
 apt-get install -y fonts-takao fcitx fcitx-mozc language-pack-ja im-config fonts-wqy-zenhei emacs-mozc
@@ -40,3 +43,18 @@ apt-get install -y lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
 
 # For Elasticsearch
 apt-get install -y openjdk-7-jdk
+
+exit
+
+# Additional software follow.
+# If you want to install them, remove 'exit' above.
+
+# Install ruby using rbenv + Ruby-build
+git clone https://github.com/sstephenson/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .bash_profile
+echo 'eval "$(rbenv init -)"' >> .bash_profile
+exec $SHELL -l
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+rbenv install -v 2.2.0
+rbenv rehash
+rbenv global 2.2.0
