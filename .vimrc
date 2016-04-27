@@ -128,22 +128,9 @@ set expandtab
 "endif
 
 "----------------------------------------------------
-" その他
-"----------------------------------------------------
-" バッファを切替えてもundoの効力を失わない
-set hidden
-" 起動時のメッセージを表示しない
-set shortmess+=I
-" 罫線の表示をしない
-set nocursorline
-set nocursorcolumn
-" 全角記号崩れの対策
-set ambiwidth=double
-
-"----------------------------------------------------
 " fcitxで日本語入力の自動切り替えを実現
 "----------------------------------------------------
-" 
+"
 autocmd InsertEnter * call CheckIm()
 autocmd InsertLeave * call DeactIm()
 
@@ -159,3 +146,25 @@ function CheckIm()
         call system('fcitx-remote -o')
     endif
 endfunction
+
+"----------------------------------------------------
+" キー補完
+"----------------------------------------------------
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+"----------------------------------------------------
+" その他
+"----------------------------------------------------
+" バッファを切替えてもundoの効力を失わない
+set hidden
+" 起動時のメッセージを表示しない
+set shortmess+=I
+" 罫線の表示をしない
+set nocursorline
+set nocursorcolumn
+" 全角記号崩れの対策
+set ambiwidth=double
+
