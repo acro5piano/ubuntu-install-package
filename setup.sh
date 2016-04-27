@@ -58,3 +58,7 @@ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-bu
 rbenv install -v 2.2.0
 rbenv rehash
 rbenv global 2.2.0
+
+# Change runlevel via Systemd
+systemctl set-default multi-user.target
+
