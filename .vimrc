@@ -92,6 +92,14 @@ set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r%=<%l/%L:%
 " ステータスラインの色
 highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
 
+" 行末のスペースを強調表示
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+
+
 "----------------------------------------------------
 " インデント
 "----------------------------------------------------
@@ -133,9 +141,9 @@ set nocursorcolumn
 set ambiwidth=double
 
 "----------------------------------------------------
-" その他
+" fcitxで日本語入力の自動切り替えを実現
 "----------------------------------------------------
-" fcitxで日本語入力の自動切り替えを実現する
+" 
 autocmd InsertEnter * call CheckIm()
 autocmd InsertLeave * call DeactIm()
 
@@ -151,4 +159,3 @@ function CheckIm()
         call system('fcitx-remote -o')
     endif
 endfunction
-
