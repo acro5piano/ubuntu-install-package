@@ -1,5 +1,5 @@
 ; Add path
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ; Qiita markdown
 (require 'ox-qmd)
