@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Home folder
-cd /home/YOUR_HOME
+cd /home/YOUR_HOME || exit
 
 # General update
 apt-get update
@@ -16,7 +16,7 @@ apt-get install -y fonts-takao fcitx fcitx-mozc language-pack-ja im-config fonts
 im-config -n fcitx
 
 # Development tools
-apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree
+apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree colordiff
 
 # Maintenance tools
 apt-get install -y gparted
