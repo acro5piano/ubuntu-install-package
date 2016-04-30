@@ -55,6 +55,12 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+; Not use auto indent
+(setq-default indent-tabs-mode nil)
+(electric-indent-mode 0)
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -72,16 +78,14 @@
 (set-face-background 'show-paren-match-face "grey")
 (set-face-foreground 'show-paren-match-face "black")
 
+; Display line number
+(require 'linum)
+(global-linum-mode 1)
+(setq linum-format "%4d ")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Set UTF-8 to default
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-buffer-file-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-
+; Don't show tool-bar and menu-bar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,5 +110,15 @@
         (interactive)
         (inactivate-input-method)))
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Set UTF-8 to default
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
 
 
