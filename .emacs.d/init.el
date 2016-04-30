@@ -3,6 +3,17 @@
 
 ; Qiita markdown
 (require 'ox-qmd)
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(defun cleanup-org-tables ()
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "-+-" nil t) (replace-match "-|-"))))
+(add-hook 'markdown-mode-hook 'orgtbl-mode)
+(add-hook 'markdown-mode-hook
+          #'(lambda()
+          (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -15,12 +26,12 @@
 (setq mozc-candidate-style 'overlay)
 
 ;; Change C-j -> C-]
-(global-set-key (kbd "C-j")
+(global-set-key (kbd "C-i")
     (lambda()
         (interactive)
 	(if current-input-method (inactivate-input-method))
 	    (toggle-input-method)))
-(global-set-key (kbd "M-j")
+(global-set-key (kbd "C-u")
     (lambda()
         (interactive)
 	(inactivate-input-method)))
@@ -56,10 +67,25 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 (line-number-mode 1)
 
-;; Hilight () 
+;; Hilight ()
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 (set-face-background 'show-paren-match-face "grey")
 (set-face-foreground 'show-paren-match-face "black")
+
+;; Package.el
+
+(require 'package)
+
+;; MELPA
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+;; MELPA-stable
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+;; Marmalade
+(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; Org
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+(package-initialize)
 
 
