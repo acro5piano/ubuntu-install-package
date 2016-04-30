@@ -6,6 +6,15 @@
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(defun cleanup-org-tables ()
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "-+-" nil t) (replace-match "-|-"))))
+(add-hook 'markdown-mode-hook 'orgtbl-mode)
+(add-hook 'markdown-mode-hook
+          #'(lambda()
+          (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Japanese input using Mozc
@@ -16,16 +25,18 @@
 (setq default-input-method "japanese-mozc")
 (setq mozc-candidate-style 'overlay)
 
-;; Change C-j -> C-]
-(global-set-key (kbd "C-i")
+;; Change IME ON/OFF key
+(bind-key* "C-i"
     (lambda()
         (interactive)
 	(if current-input-method (inactivate-input-method))
 	    (toggle-input-method)))
-(global-set-key (kbd "C-u")
+(bind-key* (kbd "C-u")
     (lambda()
         (interactive)
 	(inactivate-input-method)))
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; File
@@ -78,5 +89,14 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 (package-initialize)
+
+
+; Set UTF-8 to default
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+
 
 
