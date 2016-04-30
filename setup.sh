@@ -37,6 +37,7 @@ apt-get install -y build-essential git-core curl libreadline6 libreadline6-dev l
 # For python
 apt-get install -y python-dev python-pip python3 python3-pip gfortran liblapack-dev libpng12-dev libfreetype6-dev
 pip install virtualenv
+pip install jupyter
 
 # For android
 apt-get install -y lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
