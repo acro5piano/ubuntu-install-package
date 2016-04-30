@@ -1,7 +1,12 @@
 #!/bin/bash
 
+MY_HOME=/home/YOUR_HOME
+
+# Move dotfile to home folder
+cp -rf .* $MY_HOME
+
 # Home folder
-cd /home/YOUR_HOME || exit
+cd $MY_HOME || exit
 
 # General update
 apt-get update
