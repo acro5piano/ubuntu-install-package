@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Move dotfile to home folder
-cp -rf .config .emacs.d .vimrc ~
+cp -rf .config .emacs.d .vimrc .screenrc ~
 
 # Move home folder
 cd
@@ -38,14 +38,16 @@ sudo apt-get install -y libxslt-dev libxml2-dev # Nokogiri
 sudo apt-get install -y build-essential git-core curl libreadline6 libreadline6-dev libmysqlclient-dev libffi-dev nodejs
 
 # Install ruby using rbenv + Ruby-build
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .bash_profile
-echo 'eval "$(rbenv init -)"' >> .bash_profile
-exec $SHELL -l
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install -v 2.2.0
-rbenv rehash
-rbenv global 2.2.0
+if [ `which ruby | wc -l` -eq 0 ]; then
+    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .bash_profile
+    echo 'eval "$(rbenv init -)"' >> .bash_profile
+    exec $SHELL -l
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    rbenv install -v 2.2.0
+    rbenv rehash
+    rbenv global 2.2.0
+fi
 
 # For python
 sudo apt-get install -y python-dev python-pip python3 python3-pip gfortran liblapack-dev libpng12-dev libfreetype6-dev
