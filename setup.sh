@@ -19,7 +19,7 @@ sudo apt-get install -y fonts-takao fcitx fcitx-mozc language-pack-ja im-config 
 im-config -n fcitx
 
 # Development tools
-sudo apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree colordiff
+sudo apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree colordiff curl
 
 # Maintenance tools
 sudo apt-get install -y gparted man
@@ -30,12 +30,16 @@ sudo apt-get install -y touchegg
 # Multimedia
 sudo apt-get install -y vlc ubuntu-restricted-extras
 
+# Install nodejs
+sudo curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install nodejs build-essential
+
 # For ruby installation
 sudo apt-get install -y libreadline-dev libssl-dev libsqlite3-dev zlib1g-dev libyaml-dev libssl-dev libsqlite3-dev
 sudo apt-get install -y sqlite3 libsqlite3-dev
 sudo apt-get install -y imagemagick # MiniMagick RMagick
 sudo apt-get install -y libxslt-dev libxml2-dev # Nokogiri
-sudo apt-get install -y build-essential git-core curl libreadline6 libreadline6-dev libmysqlclient-dev libffi-dev nodejs
+sudo apt-get install -y git-core libreadline6 libreadline6-dev libmysqlclient-dev libffi-dev
 
 # Install ruby using rbenv + Ruby-build
 if [ `which ruby | wc -l` -eq 0 ]; then
@@ -62,4 +66,3 @@ sudo apt-get install -y openjdk-7-jdk
 
 # Change runlevel via Systemd
 sudo systemctl set-default multi-user.target
-
