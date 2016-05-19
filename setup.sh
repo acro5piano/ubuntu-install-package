@@ -25,7 +25,7 @@ sudo apt-get install -y vim net-tools bc gcc g++ make chromium-browser git scree
 sudo apt-get install -y gparted man
 
 # UX utilities
-sudo apt-get install -y touchegg
+sudo apt-get install -y touchegg rlwrap
 
 # Multimedia
 sudo apt-get install -y vlc ubuntu-restricted-extras
@@ -60,6 +60,5 @@ sudo apt-get install -y lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
 # For Elasticsearch
 sudo apt-get install -y openjdk-7-jdk
 
-# Change runlevel via Systemd
-sudo systemctl set-default multi-user.target
-
+# Script for easily accessing gitignore boilerplates
+sudo wget https://raw.githubusercontent.com/simonwhitaker/gibo/master/gibo -O /usr/bin/gibo
