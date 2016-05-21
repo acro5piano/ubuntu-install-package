@@ -15,8 +15,10 @@ sudo apt-get remove --purge -y netsurf*
 rm -rf ~/.netsurf
 
 # Language and inputs
-sudo apt-get install -y fonts-takao fcitx fcitx-mozc language-pack-ja im-config fonts-wqy-zenhei emacs-mozc
-im-config -n fcitx
+sudo apt-get install -y fonts-takao language-pack-ja fonts-wqy-zenhei emacs-mozc
+# No need to use fcitx
+#sudo apt-get install fcitx fcitx-mozc im-config
+#im-config -n fcitx
 
 # Development tools
 sudo apt-get install -y vim net-tools bc gcc g++ make chromium-browser git screen ssh emacs tree colordiff curl
